@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>França Web & Criativa | Design Premium e Tecnologia</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img
+          src="img/francacriativa.png"
+          alt="França Web & Criativa"
+          class="logo-img-header"
+        />
+      </div>
+
+      <div class="contato-icon" onclick="toggleContatoModal()">
+        <i class="fas fa-comments"></i>
+        <span>Iniciar Projeto</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Transforme cliques em clientes com um <br /><span class="destaque"
+            >Posicionamento Digital Premium</span
+          >
+        </h1>
+        <p class="hero-subtitle">
+          Na França Web & Criativa, unimos design exclusivo e tecnologia de
+          ponta para criar sites,
+          <strong
+            >marcas fortes e conteúdo magnético para redes sociais (Reels e
+            Posts)</strong
+          >
+          que destacam sua empresa e vendem todos os dias.
+        </p>
+        <a href="#portfolio" class="btn-cta">
+          Veja Nosso Portfólio <i class="fas fa-arrow-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <section id="portfolio" class="container">
+      <h2 class="titulo-secao">NOSSO PORTFÓLIO</h2>
+      <p class="subtitulo-secao">
+        Estruturas digitais desenvolvidas para negócios que não aceitam o
+        básico.
+      </p>
+
+      <div class="grid-menu" id="grid-projetos"></div>
+    </section>
+
+    <section class="portfolio-section">
+      <h2
+        style="
+          text-align: center;
+          margin-bottom: 3rem;
+          font-family: &quot;Montserrat&quot;, sans-serif;
+          color: var(--cor-principal);
+        "
+      >
+        Meus Projetos Recentes
+      </h2>
+
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <img
+            src="Captura de tela 2026-02-19 111850.png"
+            alt="Site Institucional Corporativo"
+          />
+          <div class="card-content-inner">
+            <h3>Site Institucional Corporativo</h3>
+            <p>
+              Focado em credibilidade e apresentação de serviços para empresas
+              B2B de alto padrão.
+            </p>
+            <div class="tags">
+              <span>HTML5</span>
+              <span>CSS Grid</span>
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://siteinstitucional-five.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="turismo.png" alt="Site de Vendas Turismo" />
+          <div class="card-content-inner">
+            <h3>Site de Vendas Exclusivo</h3>
+            <p>
+              Plataforma para agente de viagens demonstrar portfólio, produtos e
+              serviços com elegância.
+            </p>
+            <div class="tags">
+              <span>Flexbox</span>
+              <span>UI Design</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://teste-site-viagenslaizloureiro.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section" style="padding-top: 0">
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <img src="page.png" alt="Landing Page Premium" />
+          <div class="card-content-inner">
+            <h3>Landing Page Premium</h3>
+            <p>
+              Página de alta conversão estruturada para campanhas de marketing e
+              captação de leads qualificados.
+            </p>
+            <div class="tags">
+              <span>HTML5</span>
+              <span>CSS Grid</span>
+              <span>Flexbox</span>
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://landingpage-phi-eight.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img
+            src="Captura de tela 2026-02-19 111811.png"
+            alt="E-commerce Moderno"
+          />
+          <div class="card-content-inner">
+            <h3>E-commerce Moderno</h3>
+            <p>
+              Interface de loja virtual vibrante com foco na experiência do
+              usuário e otimização de checkout.
+            </p>
+            <div class="tags">
+              <span>Flexbox</span>
+              <span>UI/UX Design</span>
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://e-commerce-weld-alpha-90.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h2 class="logo-text-footer">França Web & Criativa</h2>
+      <p class="footer-desc">
+        Desenvolvendo soluções digitais exclusivas com foco em inovação, design
+        de alto nível e resultados reais para o seu negócio.
+      </p>
+
+      <div class="social-links">
+        <a href="https://instagram.com/seu.instagram" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" onclick="abrirZapFooter()"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+      </div>
+      <p style="margin-top: 20px; color: #aaa; font-size: 0.9rem">
+        &copy; 2026 França Web & Criativa. Todos os direitos reservados.
+      </p>
+    </footer>
+
+    <div id="modal-contato" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>INICIAR PROJETO</h3>
+          <button onclick="toggleContatoModal()" class="btn-fechar">
+            &times;
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>Como podemos escalar o seu negócio hoje?</p>
+          <div class="opcoes-projeto">
+            <button
+              class="btn-opcao"
+              onclick="selecionarProjeto('Site Institucional')"
+            >
+              Sites
+            </button>
+            <button
+              class="btn-opcao"
+              onclick="selecionarProjeto('Loja Virtual')"
+            >
+              E-commerce
+            </button>
+            <button
+              class="btn-opcao"
+              onclick="selecionarProjeto('Identidade Visual')"
+            >
+              Criação de Logo
+            </button>
+            <button
+              class="btn-opcao"
+              onclick="selecionarProjeto('Gestão de Redes Sociais')"
+            >
+              Posts e Reels (Instagram)
+            </button>
+          </div>
+          <div id="projeto-selecionado" style="display: none; margin-top: 20px">
+            <p>
+              Interesse selecionado:
+              <strong
+                id="nome-projeto"
+                style="color: var(--cor-destaque)"
+              ></strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            onclick="enviarOrcamentoZap()"
+            class="btn-zap"
+            id="btn-enviar-orcamento"
+            disabled
+          >
+            <i class="fab fa-whatsapp"></i> FALAR COM ESPECIALISTA
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
