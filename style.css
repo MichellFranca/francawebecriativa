@@ -3,7 +3,7 @@
   /* Paleta Oficial - França Web & Criativa */
   --cor-principal: #0b2545; /* Azul Marinho Profundo */
   --cor-secundaria: #13315c; /* Azul Intermediário */
-  --cor-destaque: #20b2aa; /* Ciano/Teal (Flecha) - Cor de Conversão */
+  --cor-destaque: #0c48e0; /* Ciano/Teal (Flecha) - Cor de Conversão */
   --cor-apoio: #e3a018; /* Dourado (Colchetes) */
 
   --cor-texto-claro: #ffffff;
@@ -63,9 +63,10 @@ header {
 }
 
 .logo-img-header {
-  height: 60px; /* Tamanho elegante e padrão para menus modernos */
+  height: 220px; /* Tamanho elegante e padrão para menus modernos */
   width: auto;
   object-fit: contain;
+  margin-top: 45px; /* Aumente ou diminua este valor para ajustar a descida */
 }
 
 .contato-icon {
@@ -329,15 +330,16 @@ footer {
   background-color: var(--cor-principal); /* Rodapé Premium escuro */
   color: var(--cor-texto-claro);
   text-align: center;
-  padding: 80px 20px 40px;
-  margin-top: 40px;
+  padding: 20px 10px 20px;
+  margin-top: 20px;
 }
 
 .logo-footer-big {
-  height: 80px; /* Ajustado para não ficar desproporcional */
+  height: 420px; /* Aumente ou diminua este valor para deixar do tamanho ideal */
   width: auto;
   object-fit: contain;
-  margin-bottom: 25px;
+  display: block; /* Garante que a imagem se comporte como um bloco isolado */
+  margin: 0 auto 5px auto; /* O '0 auto' centraliza a logo perfeitamente, e o 25px dá o espaçamento para o texto abaixo */
 }
 
 .logo-text-footer {
@@ -349,7 +351,7 @@ footer {
 .footer-desc {
   color: #a0aec0;
   max-width: 450px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 10px auto;
 }
 
 .social-links {
