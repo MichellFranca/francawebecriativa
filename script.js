@@ -1,57 +1,89 @@
 // --- 1. CONFIGURAÇÕES ---
 const NUMERO_WHATSAPP = "5571999092470";
 
-// --- 2. BANCO DE DADOS (Projetos em Destaque) ---
+// --- 2. BANCO DE DADOS (Projetos em Destaque agora apenas com Ícones) ---
+// TAREFA 3: Sem imagens de tela aqui, substituído por FontAwesome Icons.
 const portfolio = [
   {
     id: 1,
     nome: "Site Institucional Premium",
     desc: "Design de alto padrão e responsivo para posicionar sua empresa como autoridade no mercado.",
-    img: "img/portfolio-institucional.png",
+    icone: "fas fa-building", // Novo: Ícone ao invés de imagem
     tipo: "Site Institucional Premium",
   },
   {
     id: 2,
     nome: "E-commerce de Alta Conversão",
     desc: "Loja virtual robusta com foco total na experiência do usuário para multiplicar suas vendas online.",
-    img: "img/portfolio-ecommerce.png",
+    icone: "fas fa-shopping-cart",
     tipo: "E-commerce / Loja Virtual",
   },
   {
     id: 3,
     nome: "Landing Page Estratégica",
     desc: "Página desenhada cientificamente para capturar leads qualificados e impulsionar suas campanhas.",
-    img: "img/portfolio-landingpage.png",
+    icone: "fas fa-rocket",
     tipo: "Landing Page de Alta Conversão",
   },
 ];
 
 let projetoSelecionado = null;
 
-// --- 3. INICIALIZAÇÃO ---
+// --- 3. INICIALIZAÇÃO DE SERVIÇOS ---
 function carregarPortfolio() {
-  const grid = document.getElementById("grid-projetos");
+  const grid = document.getElementById("grid-servicos");
+  if (!grid) return;
   grid.innerHTML = "";
 
   portfolio.forEach((item) => {
     grid.innerHTML += `
-            <div class="card">
-                <img src="${item.img}" alt="${item.nome}">
-                <div class="card-info">
-                    <h3>${item.nome}</h3>
-                    <p class="desc">${item.desc}</p>
-                    <div class="card-footer">
-                        <button class="btn-add" onclick="abrirModalComProjeto('${item.tipo}')">
-                            Saber Mais
-                        </button>
-                    </div>
+            <div class="servico-card">
+                <div class="servico-icone">
+                    <i class="${item.icone}"></i>
                 </div>
+                <h3>${item.nome}</h3>
+                <p>${item.desc}</p>
+                <button class="btn-add" onclick="abrirModalComProjeto('${item.tipo}')">
+                    Eu quero este
+                </button>
             </div>
         `;
   });
 }
 
-// --- 4. FUNÇÕES DO MODAL DE CONTATO ---
+// --- 4. FUNÇÕES DO CARROSSEL DE PROJETOS (TAREFA 4) ---
+let slideIndex = 0;
+let autoSlideInterval;
+
+function initCarrossel() {
+  const track = document.getElementById("slider-track");
+  if (!track) return;
+
+  // Inicia o auto-play (passa a cada 4 segundos)
+  autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
+
+  // Pausa se o mouse passar por cima
+  track.parentElement.addEventListener("mouseenter", () =>
+    clearInterval(autoSlideInterval),
+  );
+  track.parentElement.addEventListener("mouseleave", () => {
+    autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
+  });
+}
+
+function mudarSlide(direcao) {
+  const track = document.getElementById("slider-track");
+  const slides = document.querySelectorAll(".slide");
+  if (!track || slides.length === 0) return;
+
+  const totalSlides = slides.length;
+  slideIndex = (slideIndex + direcao + totalSlides) % totalSlides;
+
+  // Move a "fita" do carrossel usando o eixo X
+  track.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+// --- 5. FUNÇÕES DO MODAL DE CONTATO (INALTERADAS - TAREFA 6) ---
 function toggleContatoModal() {
   const modal = document.getElementById("modal-contato");
   const isVisible = modal.style.display === "flex";
@@ -92,23 +124,25 @@ function resetarSelecao() {
   document.getElementById("btn-enviar-orcamento").disabled = true;
 }
 
-// --- 5. ENVIAR PARA O ZAP (ORÇAMENTO) ---
+// --- 6. ENVIAR PARA O ZAP (ORÇAMENTO) ---
 function enviarOrcamentoZap() {
   if (!projetoSelecionado)
     return alert("Por favor, selecione um interesse para prosseguirmos.");
 
-  // Copywriting Premium
   const mensagem = `*Olá, Michell!* 🚀%0A%0AEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.%0A%0ATenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.%0A%0APodemos conversar sobre os próximos passos?`;
 
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
   toggleContatoModal();
 }
 
-// --- 6. ZAP DO FOOTER ---
+// --- 7. ZAP DO FOOTER ---
 function abrirZapFooter() {
   const mensagem =
     "*Olá, Michell!* Conheci o trabalho da França Web & Criativa e gostaria de uma consultoria para o meu negócio. Podemos conversar?";
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
 }
 
-document.addEventListener("DOMContentLoaded", carregarPortfolio);
+document.addEventListener("DOMContentLoaded", () => {
+  carregarPortfolio();
+  initCarrossel();
+});

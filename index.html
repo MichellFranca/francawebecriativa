@@ -3,18 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>França Web & Criativa | Design Premium e Tecnologia</title>
+
+    <title>
+      França Web & Criativa | Criação de Sites e Posicionamento Digital Premium
+    </title>
+    <meta
+      name="description"
+      content="Especialistas em Web Design Premium. Criamos sites institucionais, e-commerces e landing pages de alta conversão para escalar o seu negócio. Solicite um orçamento!"
+    />
+    <meta
+      name="keywords"
+      content="criação de sites, web design, agência web, sites premium, loja virtual, e-commerce, landing page, identidade visual, tráfego, design digital"
+    />
+    <meta name="author" content="França Web & Criativa" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seusite.com.br" />
+    <meta
+      property="og:title"
+      content="França Web & Criativa | Web Design Premium"
+    />
+    <meta
+      property="og:description"
+      content="Transforme cliques em clientes. Especialistas em sites e marcas fortes para escalar o seu negócio."
+    />
+    <meta
+      property="og:image"
+      content="https://seusite.com.br/img/capa-whatsapp.jpg"
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,8 +62,9 @@
     <section class="hero">
       <div class="hero-content">
         <h1>
-          Transforme cliques em clientes com um <br /><span class="destaque"
-            >Posicionamento Digital Premium</span
+          Criação de Sites e Posicionamento Digital Premium: <br /><span
+            class="destaque"
+            >Transforme cliques em clientes</span
           >
         </h1>
         <p class="hero-subtitle">
@@ -49,137 +76,172 @@
           >
           que destacam sua empresa e vendem todos os dias.
         </p>
-        <a href="#portfolio" class="btn-cta">
-          Veja Nosso Portfólio <i class="fas fa-arrow-down"></i>
-        </a>
+        <button onclick="toggleContatoModal()" class="btn-cta">
+          Faça um Orçamento <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </section>
 
-    <section id="portfolio" class="container">
-      <h2 class="titulo-secao">NOSSO PORTFÓLIO</h2>
+    <section id="servicos" class="container">
+      <h2 class="titulo-secao">NOSSAS SOLUÇÕES</h2>
       <p class="subtitulo-secao">
-        Estruturas digitais desenvolvidas para negócios que não aceitam o
-        básico.
+        Descubra como podemos escalar a presença digital do seu negócio.
       </p>
-
-      <div class="grid-menu" id="grid-projetos"></div>
+      <div class="servicos-grid" id="grid-servicos"></div>
     </section>
 
-    <section class="portfolio-section">
-      <h2
-        style="
-          text-align: center;
-          margin-bottom: 3rem;
-          font-family: &quot;Montserrat&quot;, sans-serif;
-          color: var(--cor-principal);
-        "
-      >
-        Meus Projetos Recentes
+    <section
+      id="projetos-carrossel"
+      class="portfolio-section"
+      style="background-color: var(--cor-principal)"
+    >
+      <h2 class="titulo-secao" style="color: var(--cor-texto-claro)">
+        Projetos de Destaque
       </h2>
+      <p class="subtitulo-secao" style="color: #a0aec0">
+        Navegue pelas nossas entregas recentes
+      </p>
 
-      <div class="portfolio-grid">
-        <div class="project-card">
-          <img
-            src="Captura de tela 2026-02-19 111850.png"
-            alt="Site Institucional Corporativo"
-          />
-          <div class="card-content-inner">
-            <h3>Site Institucional Corporativo</h3>
-            <p>
-              Focado em credibilidade e apresentação de serviços para empresas
-              B2B de alto padrão.
-            </p>
-            <div class="tags">
-              <span>HTML5</span>
-              <span>CSS Grid</span>
-            </div>
-            <div class="card-actions">
+      <div class="slider-container">
+        <div class="slider-track" id="slider-track">
+          <div class="slide">
+            <img
+              src="empresarial.png"
+              alt="Desenvolvimento de Site Institucional Corporativo"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <h3>Site Institucional Corporativo</h3>
+              <p>Focado em credibilidade e apresentação de serviços B2B.</p>
               <a
                 href="https://siteinstitucional-five.vercel.app/"
                 target="_blank"
                 class="btn-primary"
+                style="display: inline-block; width: auto"
                 >Ver Projeto Completo 🚀</a
               >
             </div>
           </div>
-        </div>
 
-        <div class="project-card">
-          <img src="turismo.png" alt="Site de Vendas Turismo" />
-          <div class="card-content-inner">
-            <h3>Site de Vendas Exclusivo</h3>
-            <p>
-              Plataforma para agente de viagens demonstrar portfólio, produtos e
-              serviços com elegância.
-            </p>
-            <div class="tags">
-              <span>Flexbox</span>
-              <span>UI Design</span>
-              <span>JavaScript</span>
-            </div>
-            <div class="card-actions">
+          <div class="slide">
+            <img
+              src="turismo.png"
+              alt="Desenvolvimento de E-commerce e Site de Vendas Exclusivo para Agências de Turismo"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <h3>Site de Vendas Exclusivo</h3>
+              <p>Plataforma para agência de viagens com foco em elegância.</p>
               <a
                 href="https://teste-site-viagenslaizloureiro.vercel.app/"
                 target="_blank"
                 class="btn-primary"
+                style="display: inline-block; width: auto"
                 >Ver Projeto Completo 🚀</a
               >
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="portfolio-section" style="padding-top: 0">
-      <div class="portfolio-grid">
-        <div class="project-card">
-          <img src="page.png" alt="Landing Page Premium" />
-          <div class="card-content-inner">
-            <h3>Landing Page Premium</h3>
-            <p>
-              Página de alta conversão estruturada para campanhas de marketing e
-              captação de leads qualificados.
-            </p>
-            <div class="tags">
-              <span>HTML5</span>
-              <span>CSS Grid</span>
-              <span>Flexbox</span>
-            </div>
-            <div class="card-actions">
+          <div class="slide">
+            <img
+              src="landingpage.png"
+              alt="Desenvolvimento de Landing Page Premium de Alta Conversão"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <h3>Landing Page Premium</h3>
+              <p>Alta conversão estruturada para campanhas de marketing.</p>
               <a
                 href="https://landingpage-phi-eight.vercel.app/"
                 target="_blank"
                 class="btn-primary"
+                style="display: inline-block; width: auto"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+
+          <div class="slide">
+            <img
+              src="e-comerce.png"
+              alt="Desenvolvimento de E-commerce Moderno e Rápido"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <h3>E-commerce Moderno</h3>
+              <p>Interface vibrante focada na experiência e checkout.</p>
+              <a
+                href="https://e-commerce-weld-alpha-90.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                style="display: inline-block; width: auto"
+                >Ver Projeto Completo 🚀</a
+              >
+            </div>
+          </div>
+
+          <div class="slide">
+            <img
+              src="ceciliastudio.webp"
+              alt="Desenvolvimento de E-commerce Moderno e Rápido"
+              loading="lazy"
+            />
+            <div class="slide-caption">
+              <h3>Site de um Studio de Micropgmentação</h3>
+              <p>Interface vibrante focada no serviço do Studio.</p>
+              <a
+                href="https://studioceciliaalcantara.vercel.app/"
+                target="_blank"
+                class="btn-primary"
+                style="display: inline-block; width: auto"
                 >Ver Projeto Completo 🚀</a
               >
             </div>
           </div>
         </div>
+        <button class="slider-btn prev" onclick="mudarSlide(-1)">
+          &#10094;
+        </button>
+        <button class="slider-btn next" onclick="mudarSlide(1)">
+          &#10095;
+        </button>
+      </div>
+    </section>
 
-        <div class="project-card">
+    <section id="logos" class="container" style="padding-bottom: 60px">
+      <h2 class="titulo-secao">Marcas que Desenvolvemos</h2>
+      <p class="subtitulo-secao">
+        Identidades visuais exclusivas criadas para destacar no mercado.
+      </p>
+
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <img src="logoweb.png" alt="Criação de Logo 1" loading="lazy" />
+          <img src="raizes.png" alt="Criação de Logo 2" loading="lazy" />
+          <img src="cecilia.png" alt="Criação de Logo 3" loading="lazy" />
           <img
-            src="Captura de tela 2026-02-19 111811.png"
-            alt="E-commerce Moderno"
+            src="estampasobmedida.webp"
+            alt="Criação de Logo 4"
+            loading="lazy"
           />
-          <div class="card-content-inner">
-            <h3>E-commerce Moderno</h3>
-            <p>
-              Interface de loja virtual vibrante com foco na experiência do
-              usuário e otimização de checkout.
-            </p>
-            <div class="tags">
-              <span>Flexbox</span>
-              <span>UI/UX Design</span>
-            </div>
-            <div class="card-actions">
-              <a
-                href="https://e-commerce-weld-alpha-90.vercel.app/"
-                target="_blank"
-                class="btn-primary"
-                >Ver Projeto Completo 🚀</a
-              >
-            </div>
-          </div>
+          <img
+            src="https://via.placeholder.com/200x100/eeeeee/0b2545?text=Sua+Logo+5"
+            alt="Criação de Logo 5"
+            loading="lazy"
+          />
+          <img src="logoweb.png" alt="Criação de Logo 1" loading="lazy" />
+          <img src="raizes.png" alt="Criação de Logo 2" loading="lazy" />
+          <img src="cecilia.png" alt="Criação de Logo 3" loading="lazy" />
+          <img
+            src="estampasobmedida.webp"
+            alt="Criação de Logo 4"
+            loading="lazy"
+          />
+          <img
+            src="https://via.placeholder.com/200x100/eeeeee/0b2545?text=Sua+Logo+5"
+            alt="Criação de Logo 5"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -187,12 +249,14 @@
     <footer>
       <img
         src="logowebecriativabruto2.svg"
-        alt="França Web & Criativa"
+        alt="Logo França Web & Criativa Rodapé"
         class="logo-footer-big"
+        loading="lazy"
       />
       <p class="footer-desc">
         Desenvolvendo soluções digitais exclusivas com foco em inovação, design
-        de alto nível e resultados reais para o seu negócio.
+        de alto nível e resultados reais para o seu negócio. Atendemos em todo o
+        Brasil.
       </p>
 
       <div class="social-links">
