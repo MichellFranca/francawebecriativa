@@ -37,8 +37,7 @@ function carregarPortfolio() {
 
   portfolio.forEach((item) => {
     grid.innerHTML += `
-            <div class="servico-card">
-                <div class="servico-icone">
+            <div class="servico-card fade-in-up"> <div class="servico-icone">
                     <i class="${item.icone}"></i>
                 </div>
                 <h3>${item.nome}</h3>
@@ -142,7 +141,37 @@ function abrirZapFooter() {
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
 }
 
+// --- 8. ANIMAÇÕES DE SCROLL (INTERSECTION OBSERVER) ---
+function iniciarAnimacoesScroll() {
+  // Configura o observador
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // Se o elemento entrou na tela (pelo menos 10% dele)
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visivel");
+          // Para de observar depois que aparece a primeira vez, para não ficar piscando
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    },
+  );
+
+  // Seleciona tudo que queremos animar
+  const elementosAnimados = document.querySelectorAll(
+    ".fade-in-up, .titulo-secao, .subtitulo-secao",
+  );
+
+  // Manda o observador vigiar cada um desses elementos
+  elementosAnimados.forEach((el) => observer.observe(el));
+}
+
+// --- INICIALIZAÇÃO GERAL DA PÁGINA ---
 document.addEventListener("DOMContentLoaded", () => {
   carregarPortfolio();
   initCarrossel();
+  iniciarAnimacoesScroll();
 });
