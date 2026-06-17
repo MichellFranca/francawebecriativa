@@ -2,13 +2,12 @@
 const NUMERO_WHATSAPP = "5571999092470";
 
 // --- 2. BANCO DE DADOS (Projetos em Destaque agora apenas com Ícones) ---
-// TAREFA 3: Sem imagens de tela aqui, substituído por FontAwesome Icons.
 const portfolio = [
   {
     id: 1,
     nome: "Site Institucional Premium",
     desc: "Design de alto padrão e responsivo para posicionar sua empresa como autoridade no mercado.",
-    icone: "fas fa-building", // Novo: Ícone ao invés de imagem
+    icone: "fas fa-building",
     tipo: "Site Institucional Premium",
   },
   {
@@ -37,7 +36,8 @@ function carregarPortfolio() {
 
   portfolio.forEach((item) => {
     grid.innerHTML += `
-            <div class="servico-card fade-in-up"> <div class="servico-icone">
+            <div class="servico-card fade-in-up"> 
+                <div class="servico-icone">
                     <i class="${item.icone}"></i>
                 </div>
                 <h3>${item.nome}</h3>
@@ -50,9 +50,12 @@ function carregarPortfolio() {
   });
 }
 
-// --- 4. FUNÇÕES DO CARROSSEL DE PROJETOS (TAREFA 4) ---
+// --- 4. FUNÇÕES DO CARROSSEL DE PROJETOS ---
 let slideIndex = 0;
 let autoSlideInterval;
+// Variáveis para controle de toque (Swipe no mobile)
+let touchStartX = 0;
+let touchEndX = 0;
 
 function initCarrossel() {
   const track = document.getElementById("slider-track");
@@ -61,13 +64,44 @@ function initCarrossel() {
   // Inicia o auto-play (passa a cada 4 segundos)
   autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
 
-  // Pausa se o mouse passar por cima
+  // Pausa se o mouse passar por cima (Desktop)
   track.parentElement.addEventListener("mouseenter", () =>
     clearInterval(autoSlideInterval),
   );
   track.parentElement.addEventListener("mouseleave", () => {
     autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
   });
+
+  // Eventos de Toque (Swipe) para Mobile com otimização de performance (passive)
+  track.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      clearInterval(autoSlideInterval); // Pausa o slide automático ao tocar
+    },
+    { passive: true },
+  );
+
+  track.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      autoSlideInterval = setInterval(() => mudarSlide(1), 4000); // Retoma o automático ao soltar
+    },
+    { passive: true },
+  );
+}
+
+// Função para detectar a direção do swipe no mobile
+function handleSwipe() {
+  const swipeThreshold = 50; // Distância mínima para considerar um swipe válido
+  if (touchEndX < touchStartX - swipeThreshold) {
+    mudarSlide(1); // Deslizou para esquerda (próximo)
+  }
+  if (touchEndX > touchStartX + swipeThreshold) {
+    mudarSlide(-1); // Deslizou para direita (anterior)
+  }
 }
 
 function mudarSlide(direcao) {
@@ -82,7 +116,7 @@ function mudarSlide(direcao) {
   track.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
 
-// --- 5. FUNÇÕES DO MODAL DE CONTATO (INALTERADAS - TAREFA 6) ---
+// --- 5. FUNÇÕES DO MODAL DE CONTATO ---
 function toggleContatoModal() {
   const modal = document.getElementById("modal-contato");
   const isVisible = modal.style.display === "flex";
@@ -123,12 +157,23 @@ function resetarSelecao() {
   document.getElementById("btn-enviar-orcamento").disabled = true;
 }
 
-// --- 6. ENVIAR PARA O ZAP (ORÇAMENTO) ---
+// --- 6. ENVIAR PARA O ZAP (ORÇAMENTO COM RASTREAMENTO UTM) ---
 function enviarOrcamentoZap() {
   if (!projetoSelecionado)
     return alert("Por favor, selecione um interesse para prosseguirmos.");
 
-  const mensagem = `*Olá, Michell!* 🚀%0A%0AEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.%0A%0ATenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.%0A%0APodemos conversar sobre os próximos passos?`;
+  // Captura parâmetros da URL (útil para rastrear Tráfego Pago)
+  const urlParams = new URLSearchParams(window.location.search);
+  const origem = urlParams.get("utm_source") || "Orgânico";
+  const campanha = urlParams.get("utm_campaign") || "";
+
+  // Formata o texto de rastreio de forma oculta apenas se vier de anúncio
+  const rastreioTexto =
+    origem !== "Orgânico"
+      ? `%0A%0A_(Origem: ${origem} | Campanha: ${campanha})_`
+      : "";
+
+  const mensagem = `*Olá, Michell!* 🚀%0A%0AEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.%0A%0ATenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.%0A%0APodemos conversar sobre os próximos passos?${rastreioTexto}`;
 
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
   toggleContatoModal();
