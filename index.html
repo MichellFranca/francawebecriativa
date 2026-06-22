@@ -54,6 +54,55 @@
         />
       </div>
 
+      <button class="mobile-menu-btn" onclick="toggleMenuMobile()">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#agencia" onclick="fecharMenuMobile()">A Agência</a>
+          </li>
+          <li class="nav-item">
+            <a href="#logos" onclick="fecharMenuMobile()">Portfólio</a>
+          </li>
+
+          <li class="nav-item has-dropdown">
+            <a href="#servicos"
+              >Serviços
+              <i
+                class="fas fa-chevron-down"
+                style="font-size: 0.7rem; margin-left: 5px"
+              ></i
+            ></a>
+            <ul class="dropdown">
+              <li>
+                <a href="#servicos" onclick="fecharMenuMobile()"
+                  >Site Institucional</a
+                >
+              </li>
+              <li>
+                <a href="#servicos" onclick="fecharMenuMobile()">E-commerce</a>
+              </li>
+              <li>
+                <a href="#servicos" onclick="fecharMenuMobile()"
+                  >Landing Page</a
+                >
+              </li>
+              <li>
+                <a href="#servicos" onclick="fecharMenuMobile()"
+                  >Sistema de Gestão</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" onclick="event.preventDefault()">Área do Cliente</a>
+          </li>
+        </ul>
+      </nav>
+
       <div class="contato-icon" onclick="toggleContatoModal()">
         <i class="fas fa-comments"></i>
         <span>Iniciar Projeto</span>
@@ -80,6 +129,57 @@
         <button onclick="toggleContatoModal()" class="btn-cta">
           Faça um Orçamento <i class="fas fa-arrow-right"></i>
         </button>
+      </div>
+    </section>
+
+    <section
+      id="agencia"
+      class="container"
+      style="
+        background-color: var(--cor-fundo-secao);
+        padding-top: 80px;
+        padding-bottom: 20px;
+      "
+    >
+      <div
+        class="fade-in-up"
+        style="max-width: 800px; margin: 0 auto; text-align: center"
+      >
+        <span
+          style="
+            color: var(--cor-destaque);
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+          "
+          >A Agência</span
+        >
+        <h2 class="titulo-secao" style="margin-top: 10px">
+          Excelência em Posicionamento Digital
+        </h2>
+        <p class="subtitulo-secao" style="margin-bottom: 30px">
+          Não criamos apenas sites. Nós forjamos autoridades no mercado.
+        </p>
+        <p
+          style="
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+          "
+        >
+          Na França Web & Criativa, nossa missão é transformar o potencial do
+          seu negócio em uma máquina de vendas escalável. Acreditamos que o
+          design de alto nível aliado à tecnologia de ponta é o grande
+          diferencial competitivo do mercado atual.
+        </p>
+        <p style="color: #555; font-size: 1.05rem; line-height: 1.8">
+          Nossa equipe trabalha com precisão cirúrgica em cada linha de código e
+          cada pixel, garantindo projetos que não apenas refletem a grandeza da
+          sua marca, mas que
+          <strong>convertem visitantes em clientes leais.</strong>
+        </p>
       </div>
     </section>
 
@@ -125,7 +225,6 @@
               >
             </div>
           </div>
-
           <div class="slide">
             <img
               src="turismo.png"
@@ -146,7 +245,6 @@
               >
             </div>
           </div>
-
           <div class="slide">
             <img
               src="landingpage.png"
@@ -167,7 +265,6 @@
               >
             </div>
           </div>
-
           <div class="slide">
             <img
               src="e-comerce.png"
@@ -188,7 +285,6 @@
               >
             </div>
           </div>
-
           <div class="slide">
             <img
               src="ceciliastudio.webp"
@@ -219,7 +315,11 @@
       </div>
     </section>
 
-    <section id="logos" class="container" style="padding-bottom: 60px">
+    <section
+      id="logos"
+      class="container"
+      style="padding-bottom: 60px; background-color: #fff"
+    >
       <h2 class="titulo-secao">Marcas que Desenvolvemos</h2>
       <p class="subtitulo-secao">
         Identidades visuais exclusivas criadas para destacar no mercado.
@@ -337,7 +437,6 @@
             &times;
           </button>
         </div>
-
         <div class="modal-body">
           <p>Como podemos escalar o seu negócio hoje?</p>
           <div class="opcoes-projeto">
@@ -376,7 +475,6 @@
             </p>
           </div>
         </div>
-
         <div class="modal-footer">
           <button
             onclick="enviarOrcamentoZap()"
@@ -390,7 +488,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
     <a
       href="https://wa.me/5571999092470?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista!"
       target="_blank"
@@ -398,5 +495,7 @@
     >
       <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script src="script.js"></script>
   </body>
 </html>

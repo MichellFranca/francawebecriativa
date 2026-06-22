@@ -1,7 +1,7 @@
 // --- 1. CONFIGURAÇÕES ---
 const NUMERO_WHATSAPP = "5571999092470";
 
-// --- 2. BANCO DE DADOS (Projetos em Destaque agora apenas com Ícones) ---
+// --- 2. BANCO DE DADOS (4 Serviços) ---
 const portfolio = [
   {
     id: 1,
@@ -24,6 +24,13 @@ const portfolio = [
     icone: "fas fa-rocket",
     tipo: "Landing Page de Alta Conversão",
   },
+  {
+    id: 4,
+    nome: "Sistema de Gestão",
+    desc: "Plataformas sob medida e sistemas integrados para automatizar e escalar os processos da sua empresa.",
+    icone: "fas fa-laptop-code",
+    tipo: "Sistema de Gestão",
+  },
 ];
 
 let projetoSelecionado = null;
@@ -36,24 +43,23 @@ function carregarPortfolio() {
 
   portfolio.forEach((item) => {
     grid.innerHTML += `
-            <div class="servico-card fade-in-up"> 
-                <div class="servico-icone">
-                    <i class="${item.icone}"></i>
-                </div>
-                <h3>${item.nome}</h3>
-                <p>${item.desc}</p>
-                <button class="btn-add" onclick="abrirModalComProjeto('${item.tipo}')">
-                    Eu quero este
-                </button>
-            </div>
-        `;
+      <div class="servico-card fade-in-up"> 
+        <div class="servico-icone">
+          <i class="${item.icone}"></i>
+        </div>
+        <h3>${item.nome}</h3>
+        <p>${item.desc}</p>
+        <button class="btn-add" onclick="abrirModalComProjeto('${item.tipo}')">
+          Eu quero este
+        </button>
+      </div>
+    `;
   });
 }
 
 // --- 4. FUNÇÕES DO CARROSSEL DE PROJETOS ---
 let slideIndex = 0;
 let autoSlideInterval;
-// Variáveis para controle de toque (Swipe no mobile)
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -61,10 +67,8 @@ function initCarrossel() {
   const track = document.getElementById("slider-track");
   if (!track) return;
 
-  // Inicia o auto-play (passa a cada 4 segundos)
   autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
 
-  // Pausa se o mouse passar por cima (Desktop)
   track.parentElement.addEventListener("mouseenter", () =>
     clearInterval(autoSlideInterval),
   );
@@ -72,12 +76,11 @@ function initCarrossel() {
     autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
   });
 
-  // Eventos de Toque (Swipe) para Mobile com otimização de performance (passive)
   track.addEventListener(
     "touchstart",
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
-      clearInterval(autoSlideInterval); // Pausa o slide automático ao tocar
+      clearInterval(autoSlideInterval);
     },
     { passive: true },
   );
@@ -87,20 +90,19 @@ function initCarrossel() {
     (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
-      autoSlideInterval = setInterval(() => mudarSlide(1), 4000); // Retoma o automático ao soltar
+      autoSlideInterval = setInterval(() => mudarSlide(1), 4000);
     },
     { passive: true },
   );
 }
 
-// Função para detectar a direção do swipe no mobile
 function handleSwipe() {
-  const swipeThreshold = 50; // Distância mínima para considerar um swipe válido
+  const swipeThreshold = 50;
   if (touchEndX < touchStartX - swipeThreshold) {
-    mudarSlide(1); // Deslizou para esquerda (próximo)
+    mudarSlide(1);
   }
   if (touchEndX > touchStartX + swipeThreshold) {
-    mudarSlide(-1); // Deslizou para direita (anterior)
+    mudarSlide(-1);
   }
 }
 
@@ -111,8 +113,6 @@ function mudarSlide(direcao) {
 
   const totalSlides = slides.length;
   slideIndex = (slideIndex + direcao + totalSlides) % totalSlides;
-
-  // Move a "fita" do carrossel usando o eixo X
   track.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
 
@@ -121,10 +121,7 @@ function toggleContatoModal() {
   const modal = document.getElementById("modal-contato");
   const isVisible = modal.style.display === "flex";
   modal.style.display = isVisible ? "none" : "flex";
-
-  if (!isVisible) {
-    resetarSelecao();
-  }
+  if (!isVisible) resetarSelecao();
 }
 
 function abrirModalComProjeto(tipoProjeto) {
@@ -134,7 +131,6 @@ function abrirModalComProjeto(tipoProjeto) {
 
 function selecionarProjeto(tipo) {
   projetoSelecionado = tipo;
-
   const botoes = document.querySelectorAll(".btn-opcao");
   botoes.forEach((btn) => {
     if (btn.innerText === tipo || tipo.includes(btn.innerText)) {
@@ -143,7 +139,6 @@ function selecionarProjeto(tipo) {
       btn.classList.remove("selecionado");
     }
   });
-
   document.getElementById("projeto-selecionado").style.display = "block";
   document.getElementById("nome-projeto").innerText = tipo;
   document.getElementById("btn-enviar-orcamento").disabled = false;
@@ -157,24 +152,20 @@ function resetarSelecao() {
   document.getElementById("btn-enviar-orcamento").disabled = true;
 }
 
-// --- 6. ENVIAR PARA O ZAP (ORÇAMENTO COM RASTREAMENTO UTM) ---
+// --- 6. ENVIAR PARA O ZAP (RASTREAMENTO) ---
 function enviarOrcamentoZap() {
   if (!projetoSelecionado)
     return alert("Por favor, selecione um interesse para prosseguirmos.");
 
-  // Captura parâmetros da URL (útil para rastrear Tráfego Pago)
   const urlParams = new URLSearchParams(window.location.search);
   const origem = urlParams.get("utm_source") || "Orgânico";
   const campanha = urlParams.get("utm_campaign") || "";
-
-  // Formata o texto de rastreio de forma oculta apenas se vier de anúncio
   const rastreioTexto =
     origem !== "Orgânico"
       ? `%0A%0A_(Origem: ${origem} | Campanha: ${campanha})_`
       : "";
 
   const mensagem = `*Olá, Michell!* 🚀%0A%0AEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.%0A%0ATenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.%0A%0APodemos conversar sobre os próximos passos?${rastreioTexto}`;
-
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
   toggleContatoModal();
 }
@@ -186,35 +177,36 @@ function abrirZapFooter() {
   window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
 }
 
-// --- 8. ANIMAÇÕES DE SCROLL (INTERSECTION OBSERVER) ---
+// --- 8. ANIMAÇÕES ---
 function iniciarAnimacoesScroll() {
-  // Configura o observador
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // Se o elemento entrou na tela (pelo menos 10% dele)
         if (entry.isIntersecting) {
           entry.target.classList.add("visivel");
-          // Para de observar depois que aparece a primeira vez, para não ficar piscando
           observer.unobserve(entry.target);
         }
       });
     },
-    {
-      threshold: 0.1,
-    },
+    { threshold: 0.1 },
   );
 
-  // Seleciona tudo que queremos animar
   const elementosAnimados = document.querySelectorAll(
     ".fade-in-up, .titulo-secao, .subtitulo-secao",
   );
-
-  // Manda o observador vigiar cada um desses elementos
   elementosAnimados.forEach((el) => observer.observe(el));
 }
 
-// --- INICIALIZAÇÃO GERAL DA PÁGINA ---
+// --- 9. MENU MOBILE ---
+function toggleMenuMobile() {
+  document.getElementById("main-nav").classList.toggle("ativo");
+}
+
+function fecharMenuMobile() {
+  document.getElementById("main-nav").classList.remove("ativo");
+}
+
+// --- INICIALIZAÇÃO ---
 document.addEventListener("DOMContentLoaded", () => {
   carregarPortfolio();
   initCarrossel();
