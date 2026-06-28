@@ -7,6 +7,22 @@
     <title>
       França Web & Criativa | Criação de Sites e Posicionamento Digital Premium
     </title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18264087699"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-18264087699");
+    </script>
+
     <meta
       name="description"
       content="Especialistas em Web Design Premium. Criamos sites institucionais, e-commerces e landing pages de alta conversão para escalar o seu negócio. Solicite um orçamento!"
@@ -15,7 +31,7 @@
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://seusite.com.br" />
+    <meta property="og:url" content="https://www.francawebcriativa.com.br" />
     <meta
       property="og:title"
       content="França Web & Criativa | Web Design Premium"
@@ -26,7 +42,7 @@
     />
     <meta
       property="og:image"
-      content="https://seusite.com.br/img/capa-whatsapp.jpg"
+      content="https://www.francawebcriativa.com.br/logowebecriativapronto1.svg"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -417,7 +433,7 @@
       </p>
 
       <div class="social-links">
-        <a href="https://instagram.com/seu.instagram" target="_blank"
+        <a href="https://instagram.com/franca_web_criativa" target="_blank"
           ><i class="fab fa-instagram"></i
         ></a>
         <a href="#" onclick="abrirZapFooter()"
@@ -492,6 +508,12 @@
       href="https://wa.me/5571999092470?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista!"
       target="_blank"
       class="whatsapp-flutuante"
+      onclick="
+        gtag('event', 'generate_lead', {
+          event_category: 'WhatsApp',
+          event_label: 'Botao_Flutuante',
+        })
+      "
     >
       <i class="fab fa-whatsapp"></i>
     </a>
