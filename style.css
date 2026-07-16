@@ -285,9 +285,10 @@ header {
 /* ========================================== */
 .servicos-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 COLUNAS EXATAS NO DESKTOP */
-  gap: 20px; /* Reduzimos um pouco o espaço para caber tudo na mesma linha */
-  max-width: 1300px; /* Aumentamos o container para caber 4 items */
+  /* A mágica acontece aqui: as colunas se adaptam sozinhas! */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -677,12 +678,6 @@ footer {
 /* ========================================================= */
 /* AJUSTES MOBILE / TABLET                                   */
 /* ========================================================= */
-/* Tabletes / Laptops menores: Deixa 2 colunas */
-@media (max-width: 1100px) {
-  .servicos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 @media (max-width: 1024px) {
   .mobile-menu-btn {
@@ -780,12 +775,6 @@ footer {
   }
   .subtitulo-secao {
     font-size: 0.95rem;
-  }
-
-  /* Celulares: 1 coluna apenas para ficar grande e legível */
-  .servicos-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
 
   .slide img {

@@ -152,7 +152,7 @@ function resetarSelecao() {
   document.getElementById("btn-enviar-orcamento").disabled = true;
 }
 
-// --- 6. ENVIAR PARA O ZAP (RASTREAMENTO) ---
+// --- 6. ENVIAR PARA O ZAP (RASTREAMENTO BLINDADO) ---
 function enviarOrcamentoZap() {
   if (!projetoSelecionado)
     return alert("Por favor, selecione um interesse para prosseguirmos.");
@@ -160,13 +160,22 @@ function enviarOrcamentoZap() {
   const urlParams = new URLSearchParams(window.location.search);
   const origem = urlParams.get("utm_source") || "Orgânico";
   const campanha = urlParams.get("utm_campaign") || "";
+
+  // Limpando os dados antes de montar a URL
   const rastreioTexto =
     origem !== "Orgânico"
-      ? `%0A%0A_(Origem: ${origem} | Campanha: ${campanha})_`
+      ? `\n\n_(Origem: ${origem} | Campanha: ${campanha})_`
       : "";
 
-  const mensagem = `*Olá, Michell!* 🚀%0A%0AEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.%0A%0ATenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.%0A%0APodemos conversar sobre os próximos passos?${rastreioTexto}`;
-  window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`, "_blank");
+  const mensagem = `*Olá, Michell!* 🚀\n\nEstive no site da *França Web & Criativa* e decidi elevar o nível do meu negócio.\n\nTenho interesse no desenvolvimento de um(a) *${projetoSelecionado}*.\n\nPodemos conversar sobre os próximos passos?${rastreioTexto}`;
+
+  // A codificação segura acontece aqui
+  const mensagemCodificada = encodeURIComponent(mensagem);
+
+  window.open(
+    `https://wa.me/${NUMERO_WHATSAPP}?text=${mensagemCodificada}`,
+    "_blank",
+  );
   toggleContatoModal();
 }
 
